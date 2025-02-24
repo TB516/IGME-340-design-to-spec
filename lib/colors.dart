@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Static class to store color constants
 class Colors {
   Colors._();
 

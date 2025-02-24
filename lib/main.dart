@@ -39,12 +39,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  ///Given a title body and image url, create content row
   Widget contentTab(
       {required String name, required String path, required String text}) {
     return Padding(
       padding: EdgeInsets.all(5),
       child: Row(
         children: [
+          ///Allow for popup on image click
           GestureDetector(
             onTap: () {
               showDialog(
@@ -138,6 +140,8 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
+
+          ///Container with actual content
           Container(
             width: 200,
             height: 200,
@@ -162,6 +166,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          /// Appbar svg image
           leading: Padding(
               padding: EdgeInsets.all(8),
               child: SvgPicture.asset(
@@ -169,7 +174,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 colorFilter:
                     ColorFilter.mode(app_colors.Colors.text, BlendMode.srcIn),
               )),
+
+          ///Title text
           title: Text(widget.title),
+
+          ///About button
           actions: [
             IconButton(
               icon: Icon(Icons.account_circle),
@@ -177,10 +186,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 return showDialog<void>(
                   context: context,
                   builder: (context) {
+                    ///About app dialog
                     return AlertDialog(
                       title: Text('About'),
                       content: Text(
                           'Created By: Thomas Berrios\n\nBased on the work done in 235;s design to spec homework.\n\nFebruary 2025'),
+
+                      ///Removes popup from top of screen
                       actions: <Widget>[
                         TextButton(
                           onPressed: () {
@@ -196,8 +208,11 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ),
+
+        ///Allow for background image and content on the top
         body: Stack(
           children: [
+            ///Background image
             Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
@@ -206,11 +221,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
+
+            ///Content
             Expanded(
                 child: SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 16.0),
+
+                ///Main body
                 child: Column(children: [
+                  ///Intro section with tree
                   Container(
                     decoration: BoxDecoration(
                       color: app_colors.Colors.textAreas,
@@ -264,26 +284,37 @@ class _MyHomePageState extends State<MyHomePage> {
                       ],
                     ),
                   ),
+
+                  ///Aesthetic spacer
                   SizedBox(height: 300),
+
+                  ///Column content sections
                   Container(
                     color: app_colors.Colors.mainBackground,
                     child: Column(
                       children: [
+                        ///Planks
                         contentTab(
                             name: "planks",
                             path: "assets/images/planks.png",
                             text:
                                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet urna sagittis, auctor dolor sit amet, faucibus tellus. Phasellus placerat, leo in egestas imperdiet, lectus tortor cursus nibh, eu venenatis justo augue non nisi. Integer auctor, quam fermentum finibus tempus, dolor orci condimentum nunc, quis tincidunt magna enim a nisi. Phasellus ante neque, tincidunt eu tempus eu, dapibus vitae urna. Proin turpis sapien, egestas eu diam eget, pulvinar vehicula sem. Ut ut erat tempor, vulputate sem vitae, placerat nulla. Aenean id quam quis magna feugiat posuere nec sit amet mauris. "),
+
+                        ///Sticks
                         contentTab(
                             name: "sticks",
                             path: "assets/images/stick.png",
                             text:
                                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet urna sagittis, auctor dolor sit amet, faucibus tellus. Phasellus placerat, leo in egestas imperdiet, lectus tortor cursus nibh, eu venenatis justo augue non nisi. Integer auctor, quam fermentum finibus tempus, dolor orci condimentum nunc, quis tincidunt magna enim a nisi. Phasellus ante neque, tincidunt eu tempus eu, dapibus vitae urna. Proin turpis sapien, egestas eu diam eget, pulvinar vehicula sem. Ut ut erat tempor, vulputate sem vitae, placerat nulla. Aenean id quam quis magna feugiat posuere nec sit amet mauris. "),
+
+                        ///Chests
                         contentTab(
                             name: "chests",
                             path: "assets/images/chest.png",
                             text:
                                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet urna sagittis, auctor dolor sit amet, faucibus tellus. Phasellus placerat, leo in egestas imperdiet, lectus tortor cursus nibh, eu venenatis justo augue non nisi. Integer auctor, quam fermentum finibus tempus, dolor orci condimentum nunc, quis tincidunt magna enim a nisi. Phasellus ante neque, tincidunt eu tempus eu, dapibus vitae urna. Proin turpis sapien, egestas eu diam eget, pulvinar vehicula sem. Ut ut erat tempor, vulputate sem vitae, placerat nulla. Aenean id quam quis magna feugiat posuere nec sit amet mauris. "),
+
+                        ///Stairs
                         contentTab(
                             name: "stairs",
                             path: "assets/images/stairs.png",
@@ -292,6 +323,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       ],
                     ),
                   ),
+
+                  ///Footer
                   Container(
                     color: Colors.white,
                     child: Container(
